@@ -46,7 +46,11 @@ class ViewControllerDetail: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        dicRow = tableViewController.arrTable[tableViewController.currentRow]
+        if !tableViewController.isSearching {
+            dicRow = tableViewController.arrTable[tableViewController.currentRow]
+        } else {
+            dicRow = tableViewController.arrSearchResult[tableViewController.currentRow]
+        }
 
         // Do any additional setup after loading the view.
     }
