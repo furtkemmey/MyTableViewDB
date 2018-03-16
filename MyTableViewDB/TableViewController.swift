@@ -65,6 +65,9 @@ class TableViewController: UITableViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Updating")
+
+        tableView.estimatedRowHeight = 130
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     @objc private func handleRefresh() {
         tableView.reloadData()
