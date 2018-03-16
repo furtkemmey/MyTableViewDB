@@ -90,7 +90,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oKr-tq-W4e">
                                                             <rect key="frame" x="0.0" y="147" width="227" height="20.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zu-kh-QTm">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="2zu-kh-QTm">
                                                                     <rect key="frame" x="0.0" y="0.0" width="63" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -181,7 +181,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNK-bF-FZI">
-                                <rect key="frame" x="27" y="519" width="41" height="21"/>
+                                <rect key="frame" x="28" y="555" width="41" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -193,6 +193,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="didEndOnExit:" destination="Xb5-vT-fp7" eventType="editingDidEndOnExit" id="pck-xu-NSu"/>
+                                    <action selector="editDidBegin:" destination="Xb5-vT-fp7" eventType="editingDidBegin" id="a1i-S0-3Ll"/>
+                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DefaultPhoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JDf-dR-gzX">
                                 <rect key="frame" x="89" y="186" width="128" height="157"/>
@@ -202,11 +206,17 @@
                                 <rect key="frame" x="232" y="186" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Take" backgroundImage="lens.png"/>
+                                <connections>
+                                    <action selector="btnTake:" destination="Xb5-vT-fp7" eventType="touchUpInside" id="mXx-Gb-glr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLp-7g-PKr">
                                 <rect key="frame" x="228" y="303" width="98" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Photo Library"/>
+                                <connections>
+                                    <action selector="btnPhotoLibrary:" destination="Xb5-vT-fp7" eventType="touchUpInside" id="GZR-Kq-JEe"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aw1-qp-XRD">
                                 <rect key="frame" x="80" y="377" width="269" height="30"/>
@@ -214,6 +224,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="didEndOnExit:" destination="Xb5-vT-fp7" eventType="editingDidEndOnExit" id="U3f-VV-59g"/>
+                                    <action selector="editDidBegin:" destination="Xb5-vT-fp7" eventType="editingDidBegin" id="nYE-aY-mlJ"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ulr-3p-4au">
                                 <rect key="frame" x="80" y="422" width="269" height="30"/>
@@ -221,6 +235,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="didEndOnExit:" destination="Xb5-vT-fp7" eventType="editingDidEndOnExit" id="aEd-MI-mYH"/>
+                                    <action selector="editDidBegin:" destination="Xb5-vT-fp7" eventType="editingDidBegin" id="aha-1g-GeF"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZeK-CM-pre">
                                 <rect key="frame" x="99" y="468" width="250" height="30"/>
@@ -228,13 +246,21 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="didEndOnExit:" destination="Xb5-vT-fp7" eventType="editingDidEndOnExit" id="meF-WT-CJd"/>
+                                    <action selector="editDidBegin:" destination="Xb5-vT-fp7" eventType="editingDidBegin" id="zAq-0u-Sgy"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Sn-yH-jJs">
-                                <rect key="frame" x="76" y="514" width="273" height="30"/>
+                                <rect key="frame" x="77" y="550" width="273" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="didEndOnExit:" destination="Xb5-vT-fp7" eventType="editingDidEndOnExit" id="C4g-EA-HA0"/>
+                                    <action selector="editDidBegin:" destination="Xb5-vT-fp7" eventType="editingDidBegin" id="rQz-fB-2rV"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5PH-cu-nrc">
                                 <rect key="frame" x="27" y="140" width="45" height="21"/>
@@ -256,6 +282,10 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="didEndOnExit:" destination="Xb5-vT-fp7" eventType="editingDidEndOnExit" id="xnr-VQ-Y16"/>
+                                    <action selector="editDidBegin:" destination="Xb5-vT-fp7" eventType="editingDidBegin" id="xEy-62-hfN"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JNv-5n-mcS">
                                 <rect key="frame" x="297" y="135" width="52" height="30"/>
@@ -263,7 +293,27 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="didEndOnExit:" destination="Xb5-vT-fp7" eventType="editingDidEndOnExit" id="q3e-HY-2wC"/>
+                                    <action selector="editDidBegin:" destination="Xb5-vT-fp7" eventType="editingDidBegin" id="faa-XH-fJL"/>
+                                </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISy-Q5-2Da">
+                                <rect key="frame" x="311" y="506" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="N"/>
+                                <connections>
+                                    <action selector="btnNavigation:" destination="Xb5-vT-fp7" eventType="touchUpInside" id="LaH-jS-u8X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOy-oV-tBw">
+                                <rect key="frame" x="22" y="617" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="btnUpdate:" destination="Xb5-vT-fp7" eventType="touchUpInside" id="edj-JB-NTI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gM5-VH-5eT"/>

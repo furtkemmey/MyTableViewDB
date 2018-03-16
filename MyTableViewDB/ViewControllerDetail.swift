@@ -44,8 +44,79 @@ class ViewControllerDetail: UIViewController {
     @IBOutlet weak var textEmail: UITextField!
     @IBOutlet var textOutletCollection: [UITextField]!
 
+    // MARK: - IBAction
+    @IBAction func btnNavigation(_ sender: UIButton) {
+    }
+    @IBAction func btnUpdate(_ sender: UIButton) {
+    }
+    @IBAction func btnTake(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .camera
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            show(imagePicker, sender: self) // show view
+        } else {
+            print("Can't find camera")
+        }
+    }
+    @IBAction func btnPhotoLibrary(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        imagePicker.modalPresentationStyle = .popover
+        let popover = imagePicker.popoverPresentationController
+        popover?.sourceView = sender // set show position near button
+        popover?.sourceRect = sender.bounds
+        popover?.permittedArrowDirections = .any
+        show(imagePicker, sender: self)
+    }
+    @IBAction func didEndOnExit(_ sender: UITextField) {
+        print("didEndOnExit")
+    }
+    @IBAction func editDidBegin(_ sender: UITextField) {
+        currentButtonYPosition = sender.frame.origin.y + sender.frame.size.height // button position
+        //        print("editDidBegin")
+        //        printLog("editDidBegin")
+        switch sender.tag {
+//        case 2:
+//            txtGender.text = arrGender[0]
+//            pkvGender.selectRow(0, inComponent: 0, animated: true)
+//        case 4:
+//            textClass.text = arrClass[0]
+//            pkvClass.selectRow(0, inComponent: 0, animated: true)
+        case 0,3:
+            sender.keyboardType = .numbersAndPunctuation
+        case 6:
+            sender.keyboardType = .emailAddress
+        default:
+            sender.keyboardType = .default
+        }
+    }
+    @IBAction func editDidEnd(_ sender: UITextField) {
+        print("editDidEnd")
+        sender.resignFirstResponder()
+    }
+
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //keyboard Notification register
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)) , name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWilHild), name: .UIKeyboardDidHide, object: nil)
+
+        pkvGender = UIPickerView()
+        pkvGender.tag = 2 // the same as TextFiled tag
+        pkvGender.delegate = self
+        pkvGender.dataSource = self
+        txtGender.inputView = pkvGender // input data from pickerView
+
+        pkvClass = UIPickerView()
+        pkvClass.tag = 4
+        pkvClass.delegate = self
+        pkvClass.dataSource = self
+        textClass.inputView = pkvClass
+
         if !tableViewController.isSearching {
             dicRow = tableViewController.arrTable[tableViewController.currentRow]
         } else {
@@ -54,21 +125,80 @@ class ViewControllerDetail: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @objc func keyboardWillShow(_ sender: Notification) {
+        if let keyboardHeight = (sender.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size.height {
+            // height we can use (not include keyboard height)
+            let visiableHeight = view.frame.size.height - keyboardHeight
+            if currentButtonYPosition > visiableHeight {
+                //change button position
+                view.frame.origin.y = -(currentButtonYPosition - visiableHeight + 16)
+            }
+        }
+    }
+    @objc func keyboardWilHild(){
+        view.frame.origin.y = 0
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+extension Data {
+    var bytes: UnsafeRawPointer? {
+        return (self as NSData).bytes
+    }
+}
+
+//MARK: - UIImagePickerControllerDelegate, camera
+extension ViewControllerDetail: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    //get picture
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //        printLog("media information \(info)")
+//        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            imgPicture.image = image
+            picker.dismiss(animated: true, completion: nil)
+        }
+    }
+
+}
+
+// MARK: - UIPickerViewDelegate
+extension ViewControllerDetail: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView.tag {
+        case 2:
+            return arrGender.count
+        case 4:
+            return arrClass.count
+        default:
+            return 0
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView.tag {
+        case 2:
+            return arrGender[row]
+        case 4:
+            return arrClass[row]
+        default:
+            return ""
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView.tag {
+        case 2:
+            txtGender.text = arrGender[row]
+        case 4:
+            textClass.text = arrClass[row]
+        default:
+            break
+        }
+    }
+}
+
