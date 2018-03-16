@@ -157,10 +157,27 @@ class TableViewController: UITableViewController{
         }
     }
 }
-
 extension TableViewController:  UISearchResultsUpdating, UISearchBarDelegate  {
     func updateSearchResults(for searchController: UISearchController) {
-        // ddd
+        if searchController.isActive {
+            isSearching = true
+            arrSearchResult = arrTable.filter({ (aDicRow) -> Bool in
+                switch filterKey {
+                case "gender":
+                    print("")
+                    if let iGender = aDicRow[filterKey] as? String {
+
+                    }
+                default:
+                    if let aValue = aDicRow[filterKey] as? String {
+                        return aValue.contains(searchController.searchBar.text!)
+                    } else {
+                        false
+                    }
+                }
+                return true
+            }) // end filter
+        }
     }
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
 //        print("selectedScopeButtonIndex is \(selectedScope)")
