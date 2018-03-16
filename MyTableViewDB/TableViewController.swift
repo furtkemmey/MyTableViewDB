@@ -156,12 +156,26 @@ class TableViewController: UITableViewController{
             }
         }
     }
-
 }
 
 extension TableViewController:  UISearchResultsUpdating, UISearchBarDelegate  {
     func updateSearchResults(for searchController: UISearchController) {
         // ddd
+    }
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+//        print("selectedScopeButtonIndex is \(selectedScope)")
+        switch selectedScope {
+        case 0:
+            filterKey = "no"
+        case 1:
+            filterKey = "name"
+        case 2:
+            filterKey = "gender"
+        case 3:
+            filterKey = "address"
+        default:
+            filterKey = "name"
+        }
     }
 
 }
