@@ -79,11 +79,12 @@ class TableViewController: UITableViewController {
         return arrTable.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as! TableViewCellCustom
 
-        cell.textLabel?.text = arrTable[indexPath.row]["no"] as? String
-        cell.detailTextLabel?.text = arrTable[indexPath.row]["name"] as? String
-//        cell.accessoryType = .disclosureIndicator
+        cell.lblNo.text = arrTable[indexPath.row]["no"] as? String
+        cell.lblName.text = arrTable[indexPath.row]["name"] as? String
+        cell.lblAddress.text = arrTable[indexPath.row]["address"] as? String
+        (arrTable[indexPath.row]["gender"] as! Int == 0) ? (cell.lblGender.text = "女") : (cell.lblGender.text = "難")
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -104,6 +105,9 @@ class TableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "老爺會看到"
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
     }
 
     // MARK: - prepare for segue

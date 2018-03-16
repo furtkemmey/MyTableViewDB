@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" rowHeight="125" id="gU7-6n-mjR">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" rowHeight="125" id="gU7-6n-mjR" customClass="TableViewCellCustom" customModule="MyTableViewDB" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gU7-6n-mjR" id="xh3-oW-TTe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="124.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4xE-VE-aNb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4xE-VE-aNb">
                                             <rect key="frame" x="7" y="11" width="89" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -89,6 +89,11 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="imgPicture" destination="4xE-VE-aNb" id="8Ny-0c-gr3"/>
+                                    <outlet property="lblAddress" destination="LmA-r3-nv1" id="on4-a2-2rE"/>
+                                    <outlet property="lblGender" destination="ihf-BU-kNC" id="tHP-XX-AAt"/>
+                                    <outlet property="lblName" destination="idm-sW-Qqe" id="YfF-qD-9YA"/>
+                                    <outlet property="lblNo" destination="9WU-e2-tPj" id="x1s-Ip-icO"/>
                                     <segue destination="Xb5-vT-fp7" kind="show" identifier="Show" id="6vu-Q4-Anq"/>
                                 </connections>
                             </tableViewCell>

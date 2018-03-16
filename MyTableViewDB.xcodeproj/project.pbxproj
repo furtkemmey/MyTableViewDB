@@ -43,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7231B28F205B4C4800C6DE89 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				7260D1E120562A46000F4E11 /* AppDelegate.swift */,
+				7260D1E820562A46000F4E11 /* Assets.xcassets */,
+				7260D1EA20562A46000F4E11 /* LaunchScreen.storyboard */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
 		7260D1D520562A46000F4E11 = {
 			isa = PBXGroup;
 			children = (
@@ -63,14 +73,12 @@
 			isa = PBXGroup;
 			children = (
 				7260D1F520562EE9000F4E11 /* images */,
-				7260D1F320562B96000F4E11 /* TableViewController.swift */,
 				7260D1FA20564EE2000F4E11 /* ViewControllerDetail.swift */,
+				7260D1F320562B96000F4E11 /* TableViewController.swift */,
 				7231B28D205B4C0A00C6DE89 /* TableViewCellCustom.swift */,
-				7260D1E120562A46000F4E11 /* AppDelegate.swift */,
 				7260D1E520562A46000F4E11 /* Main.storyboard */,
-				7260D1E820562A46000F4E11 /* Assets.xcassets */,
-				7260D1EA20562A46000F4E11 /* LaunchScreen.storyboard */,
 				7260D1ED20562A46000F4E11 /* Info.plist */,
+				7231B28F205B4C4800C6DE89 /* Supporting */,
 			);
 			path = MyTableViewDB;
 			sourceTree = "<group>";
