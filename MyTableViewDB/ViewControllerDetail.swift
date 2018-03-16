@@ -22,12 +22,16 @@ class ViewControllerDetail: UIViewController {
             txtNo.text = dicRow["no"] as? String
             txtName.text = dicRow["name"] as? String
             txtGender.text = ((dicRow["gender"] as? Int) == 0) ? "女" : "難"
-//            if let aPic = dicRow["picture"] as? UIImage {
-//                imgPicture.image = aPic
-//            }
+            pkvGender.selectRow((dicRow["gender"] as! Int), inComponent: 0, animated: false)
             imgPicture.image = dicRow["picture"] as? UIImage
             textPhone.text = dicRow["phone"] as? String
             textClass.text = dicRow["class"] as? String
+            for (index,item) in arrClass.enumerated() {
+                if item == textClass.text {
+                    pkvClass.selectRow(index, inComponent: 0, animated: false)
+                    break
+                }
+            }
             textAddress.text = dicRow["address"] as? String
             textEmail.text = dicRow["email"] as? String
         }
