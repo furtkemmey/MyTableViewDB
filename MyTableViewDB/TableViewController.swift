@@ -86,6 +86,7 @@ class TableViewController: UITableViewController{
         searchController.searchBar.sizeToFit()
         self.definesPresentationContext = true
         searchController.searchBar.selectedScopeButtonIndex = 1
+        searchController.searchBar.placeholder = "Search here..."
     }
     @objc private func handleRefresh() {
         tableView.reloadData()
@@ -97,15 +98,25 @@ class TableViewController: UITableViewController{
         return 1
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrTable.count
+        if !isSearching {
+            return arrTable.count
+        } else {
+            return arrSearchResult.count
+        }
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as! TableViewCellCustom
+        var arrShowTable: [[String : Any?]]!
+        if !isSearching {
+            arrShowTable = arrTable
+        } else {
+            arrShowTable = arrSearchResult
+        }
 
-        cell.lblNo.text = arrTable[indexPath.row]["no"] as? String
-        cell.lblName.text = arrTable[indexPath.row]["name"] as? String
-        cell.lblAddress.text = arrTable[indexPath.row]["address"] as? String
-        (arrTable[indexPath.row]["gender"] as! Int == 0) ? (cell.lblGender.text = "女") : (cell.lblGender.text = "難")
+        cell.lblNo.text = arrShowTable[indexPath.row]["no"] as? String
+        cell.lblName.text = arrShowTable[indexPath.row]["name"] as? String
+        cell.lblAddress.text = arrShowTable[indexPath.row]["address"] as? String
+        (arrShowTable[indexPath.row]["gender"] as! Int == 0) ? (cell.lblGender.text = "女") : (cell.lblGender.text = "難")
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -165,19 +176,29 @@ extension TableViewController:  UISearchResultsUpdating, UISearchBarDelegate  {
                 switch filterKey {
                 case "gender":
                     print("")
-                    if let iGender = aDicRow[filterKey] as? String {
-
+                    if let iGender = aDicRow[filterKey] as? Int {
+                        var iGenderFromSearchBar: Int {
+                            return (searchController.searchBar.text! == "難") ? 1 : 0
+                        }
+                        return (iGender == iGenderFromSearchBar) ? true : false
                     }
                 default:
                     if let aValue = aDicRow[filterKey] as? String {
                         return aValue.contains(searchController.searchBar.text!)
                     } else {
-                        false
+                        return false
                     }
                 }
                 return true
             }) // end filter
+            if arrSearchResult.count > 0 {
+                print(arrSearchResult)
+                isSearching = true
+            } else {
+                isSearching = false
+            }
         }
+        self.tableView.reloadData() // reload tableView
     }
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
 //        print("selectedScopeButtonIndex is \(selectedScope)")
