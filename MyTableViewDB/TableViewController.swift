@@ -8,10 +8,18 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController{
+
     var dicRow = [String : Any?]()
     var arrTable = [[String : Any?]]()
     var currentRow = 0
+    /// search result
+    var arrSearchResult = [[String : Any?]]()
+    var searchController: UISearchController!
+    /// saved keyword by name
+    var filterKey = "name"
+    /// decide use which array arrSearchResult or arrTable
+    var isSearching = false
 
     // MARK: - func
     @objc private func btnEditAction() {
@@ -65,9 +73,19 @@ class TableViewController: UITableViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         tableView.refreshControl?.attributedTitle = NSAttributedString(string: "Updating")
-
+        // estimated row height and autolayout
         tableView.estimatedRowHeight = 130
         tableView.rowHeight = UITableViewAutomaticDimension
+        // search controller items
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.scopeButtonTitles = ["no","name","gender","address"]
+        searchController.searchBar.delegate = self
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.sizeToFit()
+        self.definesPresentationContext = true
+        searchController.searchBar.selectedScopeButtonIndex = 1
     }
     @objc private func handleRefresh() {
         tableView.reloadData()
@@ -112,8 +130,18 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
+    //custom slide button
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        <#code#>
+        // add more button
+        let moreAction = UITableViewRowAction(style: .normal, title: "more") { (rowAction, indexPath) in
+            print("more button pressed")
+        }
+        // add delete button
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "delete") { (rowAction, indexPath) in
+            self.arrTable.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        return [moreAction,deleteAction]
     }
 
     // MARK: - prepare for segue
@@ -128,4 +156,13 @@ class TableViewController: UITableViewController {
             }
         }
     }
+
 }
+
+extension TableViewController:  UISearchResultsUpdating, UISearchBarDelegate  {
+    func updateSearchResults(for searchController: UISearchController) {
+        // ddd
+    }
+
+}
+
