@@ -112,6 +112,9 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        <#code#>
+    }
 
     // MARK: - prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
