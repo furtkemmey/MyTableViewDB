@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7231B28E205B4C0A00C6DE89 /* TableViewCellCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7231B28D205B4C0A00C6DE89 /* TableViewCellCustom.swift */; };
+		7256AA542061FA6F0080519A /* MyGPS.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 7256AA532061FA6F0080519A /* MyGPS.gpx */; };
+		7256AA56206202C30080519A /* ViewControllerAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7256AA55206202C30080519A /* ViewControllerAdd.swift */; };
+		7256AA582062036B0080519A /* title.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7256AA572062036B0080519A /* title.jpg */; };
 		7260D1E220562A46000F4E11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7260D1E120562A46000F4E11 /* AppDelegate.swift */; };
 		7260D1E720562A46000F4E11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7260D1E520562A46000F4E11 /* Main.storyboard */; };
 		7260D1E920562A46000F4E11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7260D1E820562A46000F4E11 /* Assets.xcassets */; };
@@ -20,6 +23,9 @@
 
 /* Begin PBXFileReference section */
 		7231B28D205B4C0A00C6DE89 /* TableViewCellCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellCustom.swift; sourceTree = "<group>"; };
+		7256AA532061FA6F0080519A /* MyGPS.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MyGPS.gpx; sourceTree = "<group>"; };
+		7256AA55206202C30080519A /* ViewControllerAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAdd.swift; sourceTree = "<group>"; };
+		7256AA572062036B0080519A /* title.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = title.jpg; sourceTree = "<group>"; };
 		7260D1DE20562A46000F4E11 /* MyTableViewDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTableViewDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7260D1E120562A46000F4E11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7260D1E620562A46000F4E11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,6 +52,7 @@
 		7231B28F205B4C4800C6DE89 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				7256AA532061FA6F0080519A /* MyGPS.gpx */,
 				7260D1E120562A46000F4E11 /* AppDelegate.swift */,
 				7260D1E820562A46000F4E11 /* Assets.xcassets */,
 				7260D1EA20562A46000F4E11 /* LaunchScreen.storyboard */,
@@ -72,13 +79,14 @@
 		7260D1E020562A46000F4E11 /* MyTableViewDB */ = {
 			isa = PBXGroup;
 			children = (
-				7260D1F520562EE9000F4E11 /* images */,
 				7260D1F320562B96000F4E11 /* TableViewController.swift */,
-				7260D1FA20564EE2000F4E11 /* ViewControllerDetail.swift */,
 				7231B28D205B4C0A00C6DE89 /* TableViewCellCustom.swift */,
+				7260D1FA20564EE2000F4E11 /* ViewControllerDetail.swift */,
+				7256AA55206202C30080519A /* ViewControllerAdd.swift */,
 				7260D1E520562A46000F4E11 /* Main.storyboard */,
-				7260D1ED20562A46000F4E11 /* Info.plist */,
+				7260D1F520562EE9000F4E11 /* images */,
 				7231B28F205B4C4800C6DE89 /* Supporting */,
+				7260D1ED20562A46000F4E11 /* Info.plist */,
 			);
 			path = MyTableViewDB;
 			sourceTree = "<group>";
@@ -87,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				7260D1F620562EE9000F4E11 /* DefaultPhoto.jpg */,
+				7256AA572062036B0080519A /* title.jpg */,
 				7260D1F720562EE9000F4E11 /* lens.png */,
 			);
 			path = images;
@@ -151,7 +160,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7256AA542061FA6F0080519A /* MyGPS.gpx in Resources */,
 				7260D1EC20562A46000F4E11 /* LaunchScreen.storyboard in Resources */,
+				7256AA582062036B0080519A /* title.jpg in Resources */,
 				7260D1F920562EE9000F4E11 /* lens.png in Resources */,
 				7260D1E920562A46000F4E11 /* Assets.xcassets in Resources */,
 				7260D1F820562EE9000F4E11 /* DefaultPhoto.jpg in Resources */,
@@ -166,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7256AA56206202C30080519A /* ViewControllerAdd.swift in Sources */,
 				7260D1E220562A46000F4E11 /* AppDelegate.swift in Sources */,
 				7260D1FB20564EE2000F4E11 /* ViewControllerDetail.swift in Sources */,
 				7231B28E205B4C0A00C6DE89 /* TableViewCellCustom.swift in Sources */,

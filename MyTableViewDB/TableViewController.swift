@@ -27,6 +27,12 @@ class TableViewController: UITableViewController{
         tableView.isEditing ? (self.navigationItem.leftBarButtonItem?.title = "Finish") : (self.navigationItem.leftBarButtonItem?.title = "Edit")
     }
     @objc private func btnAddAction() {
+        let addVC = self.storyboard?.instantiateViewController(withIdentifier: "ViewControllerAdd") as! ViewControllerAdd
+        show(addVC, sender: nil)
+    }
+    @objc func btnCancelSearching() {
+        isSearching = false
+        self.tableView.reloadData()
     }
 
     // MARK: - LifeCycle
@@ -38,6 +44,8 @@ class TableViewController: UITableViewController{
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self , action: #selector(btnEditAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(btnAddAction) )
+        self.navigationItem.title = "Stutends items"
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "title.jpg") , for: .default)
 
         //test data
         dicRow["no"] = "S101"
@@ -45,7 +53,7 @@ class TableViewController: UITableViewController{
         dicRow["gender"] = 1
         dicRow["picture"] = UIImage(named: "DefaultPhoto.jpg")
         dicRow["phone"] = "8825252"
-        dicRow["address"] = "花見小路"
+        dicRow["address"] = "台北市信義區信義路五段7號"
         dicRow["email"] = "test@yvtc.edu.tw"
         dicRow["class"] = "WEB"
         arrTable.append(dicRow)
@@ -198,6 +206,7 @@ extension TableViewController:  UISearchResultsUpdating, UISearchBarDelegate  {
             if arrSearchResult.count > 0 {
                 print(arrSearchResult)
                 isSearching = true
+                self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(btnCancelSearching))
             } else {
                 isSearching = false
             }

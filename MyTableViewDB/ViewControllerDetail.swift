@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class ViewControllerDetail: UIViewController {
 
@@ -50,6 +52,19 @@ class ViewControllerDetail: UIViewController {
 
     // MARK: - IBAction
     @IBAction func btnNavigation(_ sender: UIButton) {
+        let geoCode = CLGeocoder()
+        geoCode.geocodeAddressString(textAddress.text!) { (placemarks, err) in
+            if err != nil {
+                return
+            }
+            if let placemark = placemarks {
+                let toPlaceMark = placemark.first
+                let toPin = MKPlacemark(placemark: toPlaceMark!)
+                let naviOption = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                let destMapItem = MKMapItem(placemark: toPin)
+                destMapItem.openInMaps(launchOptions: naviOption)
+            }
+        }
     }
     @IBAction func btnUpdate(_ sender: UIButton) {
     }
